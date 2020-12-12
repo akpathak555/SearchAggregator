@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block content%}
+<main>
+    <div class="container">
+        <h1 class="mt-4" style="font-family: Georgia; text-align: center;"><u>Search Aggregator</u></h1>
+        <nav class="navbar navbar-light bg-light">
+            <a class="btn btn-primary" href="../" role="button">Home</a>
+            <form method="GET" action="../" class="form-inline" style="margin-left:39%">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="row" style="text-align:center">
+            <table class="table table-hover border">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Name</th>
+                        <th>URL</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for value in demo %}
+                    <tr>
+                        <td>{{ value.name }}</td>
+                        <td>{{ value.url }}</td>
+                        <td><img src="{{ value.image }}" height="100px" width="100px" /></td>
+                        <td>{{ value.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- <ul class="pagination">
+                <li class="page-item"><a class="page-link active" href="../{{pagination_obj.previoue_page}}"> Previous
+                    </a></li>
+                {% for i in pagination_obj.total_pages %}
+                <li class="page-item"><a class="page-link" href="../{{i}}">{{ i }}</a></li>
+                {% endfor %}
+                <li class="page-item"><a class="page-link" href="../{{pagination_obj.next_page}}"> Next </a></li>
+            </ul> -->
+        </div>
+    </div>
+</main>
+{%endblock%}

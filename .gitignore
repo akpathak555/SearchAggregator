@@ -1,0 +1,15 @@
+/venv
+/.idea
+/.vscode
+media/
+*/__pycache__/
+*.pyc
+*.jpg
+*.png
+*.json
+.idea/
+*.out
+*.log
+db.sqlite3
+*.sw*
+.vscode
